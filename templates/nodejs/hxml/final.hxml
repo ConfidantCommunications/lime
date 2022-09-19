@@ -3,6 +3,6 @@
 -cp ::OUTPUT_DIR::/haxe
 --macro allowPackage("flash")
 --macro define("sys")
--D nodejs
+-D hxnodejs
 -D js-flatten
 -D final
