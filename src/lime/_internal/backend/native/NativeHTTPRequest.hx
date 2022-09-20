@@ -16,7 +16,9 @@ import lime.net.HTTPRequestMethod;
 import lime.system.ThreadPool;
 #if sys
 #if haxe4
-import sys.thread.Deque;
+	#if target.threaded
+	import sys.thread.Deque;
+	#end
 #elseif cpp
 import cpp.vm.Deque;
 #elseif neko
@@ -361,7 +363,7 @@ class NativeHTTPRequest
 
 		return promise.future;
 	}
-	
+
 	private function buildBuffer()	{
 		bytes = buffer.getBytes();
 		return bytes;
@@ -393,9 +395,9 @@ class NativeHTTPRequest
 	}
 
 	private function curl_onWrite(curl:CURL, output:Bytes):Int
-	{	
+	{
 		buffer.addBytes(output, 0, output.length);
-					
+
 		return output.length;
 	}
 

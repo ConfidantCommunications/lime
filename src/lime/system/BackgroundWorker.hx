@@ -4,8 +4,10 @@ import lime.app.Application;
 import lime.app.Event;
 #if sys
 #if haxe4
-import sys.thread.Deque;
-import sys.thread.Thread;
+	#if target.threaded
+	import sys.thread.Deque;
+	import sys.thread.Thread;
+	#end
 #elseif cpp
 import cpp.vm.Deque;
 import cpp.vm.Thread;
